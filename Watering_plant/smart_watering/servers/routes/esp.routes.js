@@ -1,10 +1,9 @@
-const router = require("express").Router();
-module.exports = router;
 
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const db = require('../models/database');
+const db = require('../models/db');
+
 
 
 router.post('/', async (req, res) => {
@@ -73,6 +72,10 @@ router.get('/watering-history', async (req, res) => {
         res.status(500).json({ error: "Error retrieving watering history" });
     }
 });
+
+if (temp < -20 || temp > 70) {
+    return res.status(400).json({ error: "Invalid temperature value" });
+}
 
 
 module.exports = router;
