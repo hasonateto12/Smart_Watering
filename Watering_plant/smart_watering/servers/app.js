@@ -36,6 +36,12 @@ app.get("/health", (req, res) => {
 });
 
 
+process.on("SIGINT", () => {
+    console.log("Shutting down server...");
+    process.exit(0);
+});
+
+
 app.listen(HTTP_PORT, () => {
     console.log(`Server running on: http://localhost:${HTTP_PORT}`);
 });
