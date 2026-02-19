@@ -69,3 +69,24 @@ Light sensor protection
 
 
 
+
+## REST API
+### ESP
+- POST /esp/        → send sensor data
+- GET  /esp/state
+- GET  /esp/dataMode
+
+### WEB
+- GET  /api/
+- GET  /api/all
+- POST /api/add
+- PUT  /api/plant/:id
+- DELETE /api/:id
+
+## MQTT
+Used for real-time mode switching and pump control:
+- system/mode/set
+- system/mode/current
+- pump/control
+- pump/status
+
