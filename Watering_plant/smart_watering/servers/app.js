@@ -27,6 +27,15 @@ app.use("/api", webRoutes);
 // Optional backward compatibility (if your client uses /tree)
 app.use("/tree", webRoutes);
 
+app.get("/health", (req, res) => {
+    res.json({
+        status: "OK",
+        uptime: process.uptime(),
+        timestamp: new Date()
+    });
+});
+
+
 app.listen(HTTP_PORT, () => {
     console.log(`Server running on: http://localhost:${HTTP_PORT}`);
 });
