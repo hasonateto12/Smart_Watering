@@ -19,8 +19,9 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-const treeRoutes = require("./routes/treeRoute");
-const espRoutes = require('./routes/esp');
+const webRoutes = require("./routes/web.routes");
+const espRoutes = require("./routes/esp.routes");
+
 const wateringRoutes = require("./routes/wateringRoute");
 
 // Log the imported modules
@@ -29,8 +30,9 @@ console.log("ESP Routes:", espRoutes);
 console.log("Watering Routes:", wateringRoutes);
 
 // Use the routes
-app.use("/tree", treeRoutes);
 app.use("/esp", espRoutes);
+app.use("/api", webRoutes);
+
 app.use("/watering", wateringRoutes);
 
 app.listen(HTTP_PORT, () => {
